@@ -4,88 +4,73 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>동우CNPACK | 포장·제조</title>
-
-  <!-- Basic SEO -->
   <meta name="description" content="동우CNPACK — 기업 소개, 연혁, 연락처, 오시는 길 안내"/>
   <link rel="canonical" href="https://dongwoocnpack.com/"/>
-
-  <!-- Open Graph -->
   <meta property="og:title" content="동우CNPACK"/>
   <meta property="og:description" content="기업 소개와 오시는 길"/>
   <meta property="og:url" content="https://dongwoocnpack.com/"/>
   <meta property="og:type" content="website"/>
-
   <link rel="icon" href="/logo.png" type="image/png"/>
 
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"동우CNPACK",
-    "url":"https://dongwoocnpack.com",
-    "logo":"https://dongwoocnpack.com/logo.png",
-    "email":"mailto:korea8222@hanmail.net",
-    "telephone":[ "+82-31-631-7284", "+82-10-9002-8222" ]
-  }
-  </script>
-
-  <!-- Tailwind CDN + custom palette from the logo -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind config BEFORE CDN -->
   <script>
+    tailwind = window.tailwind || {}
     tailwind.config = {
       theme: {
         extend: {
           colors: {
             brand: {
-              50:  '#eff4f8',
-              100: '#d7e3ee',
-              200: '#afc7de',
-              300: '#7ea3c8',
-              400: '#4b7eae',
-              500: '#346897',
-              600: '#22507a',   /* primary */
-              700: '#1b3c5a',
-              800: '#142c41',
-              900: '#0c1d2c'
+              50:  '#eff4f8', 100: '#d7e3ee', 200: '#afc7de', 300: '#7ea3c8', 400: '#4b7eae',
+              500: '#346897', 600: '#22507a', 700: '#1b3c5a', 800: '#142c41', 900: '#0c1d2c'
             },
             accent: {
-              50:  '#f9ecec',
-              100: '#f1d3d3',
-              200: '#e3a8a8',
-              300: '#d57d7d',
-              400: '#c65757',
-              500: '#b64242',
-              600: '#913439',   /* accent from logo */
-              700: '#6f2323',
-              800: '#4f1919',
-              900: '#361010'
+              50:  '#f9ecec', 100: '#f1d3d3', 200: '#e3a8a8', 300: '#d57d7d', 400: '#c65757',
+              500: '#b64242', 600: '#913439', 700: '#7c2a2a', 800: '#5b2020', 900: '#3d1515'
             }
           }
         }
       }
     }
   </script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <style>html{scroll-behavior:smooth;}</style>
+  <style>
+    html { scroll-behavior:smooth; }
+    body { background:#eff4f8; color:#111; }
+    .fallback-accent { color:#913439; }
+  </style>
 </head>
 <body class="bg-brand-50 text-gray-900">
-  <!-- Top bar -->
-  <div class="bg-gradient-to-r from-brand-700 to-brand-600 text-white">
-    <header class="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3">
-        <img src="/logo.png" alt="로고" class="h-10 w-10 object-contain" loading="lazy"/>
-        <span class="text-xl md:text-2xl font-bold">동우CNPACK</span>
+  <!-- Header: white background -->
+  <header class="bg-white border-b sticky top-0 z-50">
+    <div class="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
+      <!-- Brand block: set text size, make logo height = 1em (same as text) -->
+      <a href="/" class="flex items-baseline gap-2 text-2xl md:text-3xl leading-none">
+        <img src="/logo.png" alt="로고" class="h-[1em] w-auto align-baseline" loading="lazy"/>
+        <span class="font-bold text-brand-700">동우CNPACK</span>
       </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
+      <button class="md:hidden p-2 rounded border border-brand-100 text-brand-700" aria-label="메뉴 열기"
+              onclick="document.getElementById('mobileNav').classList.toggle('hidden')">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-brand-700">
         <a href="#about" class="hover:underline">기업 소개</a>
         <a href="#contact" class="hover:underline">연락처</a>
         <a href="#maps" class="hover:underline">오시는 길</a>
       </nav>
-    </header>
-  </div>
+    </div>
+    <nav id="mobileNav" class="md:hidden hidden border-t text-brand-700">
+      <div class="mx-auto max-w-5xl px-4 py-3 flex flex-col gap-2 text-sm bg-white">
+        <a href="#about" class="py-1">기업 소개</a>
+        <a href="#contact" class="py-1">연락처</a>
+        <a href="#maps" class="py-1">오시는 길</a>
+      </div>
+    </nav>
+  </header>
 
   <main class="mx-auto max-w-5xl px-4">
-    <!-- Intro -->
     <section id="about" class="mt-8 mb-8">
       <div class="rounded-2xl border border-brand-100 bg-white shadow-sm p-6">
         <h1 class="text-3xl font-bold text-brand-800 mb-3">동우CNPACK</h1>
@@ -93,41 +78,45 @@
       </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact" class="mb-10">
       <h2 class="text-2xl font-semibold text-brand-800 mb-4">연락처</h2>
       <div class="grid md:grid-cols-2 gap-6">
         <div class="space-y-2 rounded-xl bg-white p-4 border border-brand-100">
           <p><strong>사무실 주소</strong> : 서울특별시 중구 다산로 29길 45</p>
           <p><strong>공장 주소</strong> : 경기도 이천시 진상미로 1857-10</p>
-          <p><strong>Tel</strong> : <a class="text-brand-700 hover:text-brand-600 underline" href="tel:0316317284">031-631-7284</a></p>
+          <p><strong>Tel</strong> :
+             <a class="text-accent-600 hover:text-accent-700 underline fallback-accent" href="tel:0316317284">031-631-7284</a>
+          </p>
           <p><strong>Fax</strong> : <span id="faxText">031-631-7287</span>
-             <button onclick="copyFax()" class="ml-2 px-2 py-1 text-xs rounded border border-brand-300 text-brand-800 hover:bg-brand-50">복사</button>
+             <button onclick="copyFax()" class="ml-2 px-2 py-1 text-xs rounded border border-accent-300 text-accent-700 hover:bg-accent-50">복사</button>
              <span id="faxCopied" class="ml-2 text-xs text-accent-600 hidden">복사됨!</span>
           </p>
-          <p><strong>Mobile</strong> : <a class="text-brand-700 hover:text-brand-600 underline" href="tel:01090028222">010-9002-8222</a></p>
-          <p><strong>E-mail</strong> : <a class="text-accent-600 hover:text-accent-700 underline visited:text-accent-700" href="mailto:korea8222@hanmail.net">korea8222@hanmail.net</a></p>
+          <p><strong>Mobile</strong> :
+             <a class="text-accent-600 hover:text-accent-700 underline fallback-accent" href="tel:01090028222">010-9002-8222</a>
+          </p>
+          <p><strong>E-mail</strong> :
+             <a class="text-accent-600 hover:text-accent-700 underline visited:text-accent-700 fallback-accent" href="mailto:korea8222@hanmail.net">korea8222@hanmail.net</a>
+          </p>
         </div>
         <div class="flex flex-wrap items-center gap-3">
-          <a href="tel:0316317284" class="px-4 py-2 rounded-lg bg-brand-600 text-white hover:bg-brand-700">사무실 전화</a>
-          <a href="tel:01090028222" class="px-4 py-2 rounded-lg bg-brand-600 text-white hover:bg-brand-700">휴대폰</a>
-          <a href="mailto:korea8222@hanmail.net?subject=%EB%AC%B8%EC%9D%98" class="px-4 py-2 rounded-lg border border-accent-300 text-accent-600 hover:bg-accent-50">이메일 문의</a>
+          <a href="tel:0316317284" class="px-4 py-2 rounded-lg bg-accent-600 text-white hover:bg-accent-700">사무실 전화</a>
+          <a href="tel:01090028222" class="px-4 py-2 rounded-lg bg-accent-600 text-white hover:bg-accent-700">휴대폰</a>
+          <a href="mailto:korea8222@hanmail.net?subject=%EB%AC%B8%EC%9D%98" class="px-4 py-2 rounded-lg bg-accent-600 text-white hover:bg-accent-700">이메일 문의</a>
         </div>
       </div>
     </section>
 
-    <!-- Maps -->
     <section id="maps" class="mb-16">
       <h2 class="text-2xl font-semibold text-brand-800 mb-4">오시는 길</h2>
       <div class="grid md:grid-cols-2 gap-6">
         <div class="bg-white rounded-xl border border-brand-100 p-3">
           <h3 class="font-medium mb-2 text-brand-700">사무실</h3>
-          <div id="officeMap" class="w-full h-72 rounded-lg border border-brand-200"></div>
+          <div id="officeMap" class="w-full h-64 md:h-72 rounded-lg border border-brand-200"></div>
           <p class="mt-2 text-sm text-gray-600">서울특별시 중구 다산로 29길 45</p>
         </div>
         <div class="bg-white rounded-xl border border-brand-100 p-3">
           <h3 class="font-medium mb-2 text-brand-700">공장</h3>
-          <div id="factoryMap" class="w-full h-72 rounded-lg border border-brand-200"></div>
+          <div id="factoryMap" class="w-full h-64 md:h-72 rounded-lg border border-brand-200"></div>
           <p class="mt-2 text-sm text-gray-600">경기도 이천시 진상미로 1857-10</p>
         </div>
       </div>
@@ -140,7 +129,6 @@
     </div>
   </footer>
 
-  <!-- Kakao Maps -->
   <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=bebb4d43642ffeb6f21dacdb60c80c08&libraries=services"></script>
   <script>
     function renderMap(containerId, address) {
@@ -169,7 +157,7 @@
       const txt = "031-631-7287";
       navigator.clipboard.writeText(txt).then(() => {
         document.getElementById('faxCopied').classList.remove('hidden');
-        setTimeout(()=>document.getElementById('faxCopied').classList.add('hidden'),1200);
+        setTimeout(()=>document.getElementById('faxCopied').classList.add('hidden'), 1200);
       });
     }
   </script>
