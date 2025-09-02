@@ -1,128 +1,151 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <!--
-    동우 씨앤팩 회사 홈페이지 (카카오 지도 동적 버전)
-    - Tailwind CSS는 CDN으로 불러옵니다.
-    - 오시는 길 섹션에 카카오 지도를 두 곳(사무실, 공장) 표시합니다.
-    - 지도 API를 사용하려면 Kakao Developers에서 발급받은 앱 키를 YOUR_APP_KEY 자리에 넣어주세요.
-    - 지도 좌표는 카카오 지도 JS의 Geocoder 서비스를 통해 주소를 검색하여 자동으로 설정됩니다.
-  -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>동우 씨앤팩 - 공식 홈페이지</title>
-  <!-- Tailwind CSS Play CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <!-- Kakao Map API: autoload를 false로 두고 services 라이브러리를 포함하여 지오코더를 사용할 수 있게 합니다. -->
-  <!--
-    앱 키를 제공된 값으로 대체했습니다. Kakao Developers 콘솔에서 발급한 JavaScript 키입니다.
-    도메인 제한을 위해서는 Kakao Developers 콘솔에서 해당 키의 도메인 목록에
-    https://dongwoocnpack.com, http://localhost:8000 등을 등록해야 합니다.
-  -->
-  <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=bebb4d43642ffeb6f21dacdb60c80c08&autoload=false&libraries=services"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>동우 씨앤팩 | 포장·제조</title>
+
+  <!-- Basic SEO -->
+  <meta name="description" content="동우 씨앤팩 — 기업 소개, 연혁, 연락처, 오시는 길 안내"/>
+  <link rel="canonical" href="https://dongwoocnpack.com/"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="동우 씨앤팩"/>
+  <meta property="og:description" content="기업 소개와 오시는 길"/>
+  <meta property="og:url" content="https://dongwoocnpack.com/"/>
+  <meta property="og:type" content="website"/>
+
+  <!-- Favicon (logo.png를 임시 파비콘으로 사용) -->
+  <link rel="icon" href="/logo.png" type="image/png"/>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"동우 씨앤팩",
+    "url":"https://dongwoocnpack.com",
+    "logo":"https://dongwoocnpack.com/logo.png",
+    "email":"mailto:korea8222@hanmail.net",
+    "telephone":[
+      "+82-31-631-7284",
+      "+82-10-9002-8222"
+    ],
+    "address":[{
+      "@type":"PostalAddress",
+      "streetAddress":"다산로 29길 45",
+      "addressLocality":"중구",
+      "addressRegion":"서울특별시",
+      "addressCountry":"KR"
+    },{
+      "@type":"PostalAddress",
+      "streetAddress":"진상미로 1857-10",
+      "addressLocality":"이천시",
+      "addressRegion":"경기도",
+      "addressCountry":"KR"
+    }]
+  }
+  </script>
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Kakao Maps SDK (services 라이브러리 포함, 지오코더 사용) -->
+  <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=bebb4d43642ffeb6f21dacdb60c80c08&libraries=services"></script>
+
+  <style>
+    html{scroll-behavior:smooth;}
+  </style>
 </head>
-<body class="bg-white text-gray-900 antialiased">
-  <!-- 헤더: 로고와 회사명, 메뉴 -->
-  <header class="border-b border-gray-200">
-    <div class="max-w-screen-lg mx-auto px-4 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <!-- 로고 이미지: logo.png를 같은 폴더에 두세요 -->
-        <img src="logo.png" alt="동우 씨앤팩 로고" class="h-16 w-auto" />
-        <h1 class="text-3xl font-extrabold">동우 씨앤팩</h1>
-      </div>
-      <nav class="hidden sm:flex gap-6 text-sm font-medium">
-        <a href="#contact" class="text-gray-600 hover:text-blue-600">연락처</a>
-        <a href="#addresses" class="text-gray-600 hover:text-blue-600">찾아오시는 길</a>
+<body class="bg-white text-gray-900">
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
+    <div class="mx-auto max-w-5xl px-4 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <img src="/logo.png" alt="로고" class="h-10 w-10 object-contain" loading="lazy"/>
+        <span class="text-xl md:text-2xl font-bold">동우 씨앤팩</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#about" class="hover:text-blue-600">기업 소개</a>
+        <a href="#contact" class="hover:text-blue-600">연락처</a>
+        <a href="#maps" class="hover:text-blue-600">오시는 길</a>
       </nav>
     </div>
   </header>
 
-  <!-- 본문 -->
-  <main class="max-w-screen-lg mx-auto px-4 py-10 space-y-16">
-    <!-- 연락처 섹션 -->
-    <section id="contact" class="space-y-4">
-      <h2 class="text-2xl font-semibold">연락처</h2>
-      <p class="text-gray-700">전화: <a href="tel:+82-31-631-7284" class="text-blue-600 underline">031-631-7284</a></p>
-      <p class="text-gray-700">팩스: 031-631-7287</p>
-      <p class="text-gray-700">휴대폰: <a href="tel:+82-10-9002-8222" class="text-blue-600 underline">010-9002-8222</a></p>
-      <p class="text-gray-700">이메일: <a href="mailto:korea8222@hanmail.net" class="text-blue-600 underline">korea8222@hanmail.net</a></p>
+  <main class="mx-auto max-w-5xl px-4 py-10">
+    <section id="about" class="mb-12">
+      <h1 class="text-3xl font-bold mb-3">동우 씨앤팩</h1>
+      <p class="text-gray-700 leading-relaxed">
+        포장·제조 전문 기업입니다. 기본 정보와 연락처, 오시는 길을 안내드립니다.
+      </p>
     </section>
 
-    <!-- 주소 섹션 -->
-    <section id="addresses" class="space-y-8">
-      <h2 class="text-2xl font-semibold">주소</h2>
-      <div>
-        <h3 class="text-xl font-semibold mb-2">사무실</h3>
-        <p class="text-gray-700 mb-4">서울 중구 다산로 29길 45(신당동)</p>
-        <!-- 사무실 지도 -->
-        <div id="officeMap" class="w-full h-64 rounded-lg shadow border"></div>
+    <section id="contact" class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">연락처</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="space-y-1">
+          <p><strong>사무실 주소</strong> : 서울특별시 중구 다산로 29길 45</p>
+          <p><strong>공장 주소</strong> : 경기도 이천시 진상미로 1857-10</p>
+          <p><strong>Tel</strong> : 031-631-7284 &nbsp; | &nbsp; <strong>Fax</strong> : 031-631-7287</p>
+          <p><strong>Mobile</strong> : 010-9002-8222</p>
+          <p><strong>E-mail</strong> : <a class="text-blue-600 hover:underline" href="mailto:korea8222@hanmail.net">korea8222@hanmail.net</a></p>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="tel:0316317284" class="px-4 py-2 rounded-lg border hover:bg-gray-50">사무실 전화</a>
+          <a href="tel:01090028222" class="px-4 py-2 rounded-lg border hover:bg-gray-50">휴대폰</a>
+          <a href="mailto:korea8222@hanmail.net?subject=%EB%AC%B8%EC%9D%98" class="px-4 py-2 rounded-lg border hover:bg-gray-50">이메일 문의</a>
+        </div>
       </div>
-      <div>
-        <h3 class="text-xl font-semibold mb-2">공장</h3>
-        <p class="text-gray-700 mb-4">경기도 이천시 진상미로 1857-10</p>
-        <!-- 공장 지도 -->
-        <div id="factoryMap" class="w-full h-64 rounded-lg shadow border"></div>
+    </section>
+
+    <section id="maps" class="mb-16">
+      <h2 class="text-2xl font-semibold mb-4">오시는 길</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-medium mb-2">사무실</h3>
+          <div id="officeMap" class="w-full h-72 rounded-xl border"></div>
+          <p class="mt-2 text-sm text-gray-600">서울특별시 중구 다산로 29길 45</p>
+        </div>
+        <div>
+          <h3 class="font-medium mb-2">공장</h3>
+          <div id="factoryMap" class="w-full h-72 rounded-xl border"></div>
+          <p class="mt-2 text-sm text-gray-600">경기도 이천시 진상미로 1857-10</p>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- 푸터 -->
-  <footer class="border-t border-gray-200">
-    <div class="max-w-screen-lg mx-auto px-4 py-6 text-sm text-gray-600">
-      © 2025 동우 씨앤팩
+  <footer class="border-t">
+    <div class="mx-auto max-w-5xl px-4 py-6 text-sm text-gray-500">
+      © 2025 동우 씨앤팩. All rights reserved.
     </div>
   </footer>
 
-  <!-- 카카오 지도 초기화 스크립트 -->
   <script>
-    // 페이지 로드 후 카카오 지도를 초기화하는 함수입니다. 주소를 좌표로 변환하여 마커와 함께 지도를 표시합니다.
-    function initKakaoMaps() {
-      // Geocoder 인스턴스를 생성합니다.
-      var geocoder = new kakao.maps.services.Geocoder();
-
-      /**
-       * 주어진 주소로 지도를 생성하고 표시합니다.
-       * @param {string} containerId 지도 컨테이너의 DOM ID
-       * @param {string} address 주소 문자열
-       */
-      function createMap(containerId, address) {
-        var container = document.getElementById(containerId);
-        // 기본 중심 좌표(서울 시청)를 넣고 초기화합니다. 실제 좌표는 주소 검색 후 재설정됩니다.
-        var map = new kakao.maps.Map(container, {
-          center: new kakao.maps.LatLng(37.5665, 126.9780),
-          level: 3
-        });
-
-        // 주소로 좌표를 검색합니다.
-        geocoder.addressSearch(address, function(result, status) {
-          if (status === kakao.maps.services.Status.OK) {
-            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-            // 마커를 생성하고 지도에 표시합니다.
-            var marker = new kakao.maps.Marker({
-              map: map,
-              position: coords
-            });
-            // 주소를 표시하는 인포윈도우를 생성합니다.
-            var infowindow = new kakao.maps.InfoWindow({
-              content: '<div style="padding:5px;font-size:14px;">' + address + '</div>'
-            });
-            infowindow.open(map, marker);
-            // 지도의 중심을 검색된 좌표로 이동시킵니다.
-            map.setCenter(coords);
-          } else {
-            console.error('주소 검색 실패: ' + address);
-          }
-        });
-      }
-
-      // 사무실 지도 생성 - 주소를 구체적으로 입력합니다.
-      // 카카오 지오코더는 괄호가 없는 도로명주소를 선호하므로 괄호를 제거한 정식 도로명주소를 사용합니다.
-      createMap('officeMap', '서울특별시 중구 다산로 29길 45');
-      // 공장 지도 생성 - 공장 주소 역시 상세 도로명으로 입력합니다.
-      createMap('factoryMap', '경기도 이천시 진상미로 1857-10');
+    // 주소를 좌표로 변환하여 지도에 마커 표시
+    function renderMap(containerId, address) {
+      const container = document.getElementById(containerId);
+      const map = new kakao.maps.Map(container, {
+        center: new kakao.maps.LatLng(37.5665, 126.9780), // 임시(서울 시청)
+        level: 5
+      });
+      const geocoder = new kakao.maps.services.Geocoder();
+      geocoder.addressSearch(address, function(result, status) {
+        if (status === kakao.maps.services.Status.OK && result.length > 0) {
+          const y = parseFloat(result[0].y);
+          const x = parseFloat(result[0].x);
+          const latlng = new kakao.maps.LatLng(y, x);
+          map.setCenter(latlng);
+          new kakao.maps.Marker({ map, position: latlng });
+        } else {
+          console.warn('주소를 찾지 못했습니다:', address, status);
+        }
+      });
     }
-    // Kakao 지도 API 로드 후 initKakaoMaps 호출
-    kakao.maps.load(initKakaoMaps);
+
+    // 괄호 없는 도로명 주소 사용(지오코더 인식률 ↑)
+    renderMap('officeMap', '서울특별시 중구 다산로 29길 45');
+    renderMap('factoryMap', '경기도 이천시 진상미로 1857-10');
   </script>
 </body>
 </html>
