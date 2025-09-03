@@ -1,236 +1,56 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="format-detection" content="telephone=no,email=no,address=no"/>
-  <meta name="theme-color" content="#22507a"/>
-  <title>동우CNPACK | 식품 포장지, 비닐폴리백 전문 제조</title>
-  <meta name="description" content="동우CNPACK — 식품 포장지, 비닐폴리백 전문 제조 / 기업 소개·연락처·오시는 길"/>
-  <link rel="canonical" href="https://dongwoocnpack.com/"/>
-  <meta property="og:title" content="동우CNPACK"/>
-  <meta property="og:description" content="식품 포장지, 비닐폴리백 전문 제조 / 기업 소개와 오시는 길"/>
-  <meta property="og:url" content="https://dongwoocnpack.com/"/>
-  <meta property="og:type" content="website"/>
-  <link rel="icon" href="/logo.png" type="image/png"/>
-
-  <!-- Tailwind config BEFORE CDN -->
-
-  <script>
-    tailwind = window.tailwind || {};
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              50:  '#eff4f8', 100: '#e6eef5', 200: '#cdddea', 300: '#a7c2da', 400: '#7ba2c6',
-              500: '#4f82b1', 600: '#22507a', 700: '#1b3c5a', 800: '#142c41', 900: '#0c1d2c'
-            },
-            accent: {
-              50:  '#f9ecec', 100: '#f1d3d3', 200: '#e3a8a8', 300: '#d57d7d', 400: '#c65757',
-              500: '#b64242', 600: '#913439', 700: '#7c2a2a', 800: '#5b2020', 900: '#3d1515'
-            }
-          }
-        }
-      }
-    }
-  </script>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    /* Fallback to ensure contrast even if Tailwind doesn't load/extend */
-    body { background:#60a5fa; color:#111; }
-
-    html { scroll-behavior:smooth; }
-  </style>
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "legalName": "동우CNPACK",
-  "name": "동우CNPACK",
-  "url": "https://dongwoocnpack.com",
-  "logo": "https://dongwoocnpack.com/logo.png",
-  "taxID": "201-18-48413",
-  "employee": {
-    "@type": "Person",
-    "name": "조남휘",
-    "jobTitle": "대표자"
-  },
-  "email": "mailto:korea8222@hanmail.net",
-  "telephone": [
-    "+82-31-631-7284",
-    "+82-10-9002-8222"
-  ]
-}
-  </script>
+  <!--
+    기본 회사 홈페이지입니다. Tailwind CSS를 CDN으로 불러와 별도 설치 없이 사용할 수 있습니다.
+  -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>동우 씨앤팩 - 공식 홈페이지</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="bg-blue-400 text-gray-900">
-  <!-- Header: white background, big horizontal brand -->
-  <header class="bg-white border-b sticky top-0 z-50" style="padding-top: env(safe-area-inset-top);">
-    <div class="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
-      <!-- Brand block: BIG text; logo height = 1em -->
-      <a href="/" class="flex items-baseline gap-3 text-3xl md:text-4xl leading-none tracking-tight text-nowrap">
-        <img src="/logo.png" alt="로고" class="h-[1em] w-auto align-baseline"/>
-        <span class="font-bold text-blue-700">동우CNPACK</span>
-      </a>
-      <button class="md:hidden p-3 rounded border border-brand-100 text-blue-700 min-h-[44px] min-w-[44px]" aria-label="메뉴 열기"
-              onclick="document.getElementById('mobileNav').classList.toggle('hidden')">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
-      <nav class="hidden md:flex items-center gap-6 text-sm text-blue-700">
-        <a href="#about" class="hover:underline">기업 소개</a>
-        <a href="#contact" class="hover:underline">연락처</a>
-        <a href="#maps" class="hover:underline">오시는 길</a>
+<body class="bg-white text-gray-900 antialiased">
+  <!-- 헤더: 회사명과 메뉴 -->
+  <header class="border-b border-gray-200">
+    <div class="max-w-screen-lg mx-auto px-4 py-4 flex items-center justify-between">
+      <h1 class="text-xl font-bold">동우 씨앤팩</h1>
+      <nav class="hidden sm:flex gap-6 text-sm font-medium">
+        <a href="#contact" class="text-gray-600 hover:text-blue-600">연락처</a>
+        <a href="#addresses" class="text-gray-600 hover:text-blue-600">찾아오시는 길</a>
       </nav>
     </div>
-    <nav id="mobileNav" class="md:hidden hidden border-t text-blue-700">
-      <div class="mx-auto max-w-5xl px-4 py-3 flex flex-col gap-2 text-sm bg-white">
-        <a href="#about" class="py-1">기업 소개</a>
-        <a href="#contact" class="py-1">연락처</a>
-        <a href="#maps" class="py-1">오시는 길</a>
-      </div>
-    </nav>
   </header>
-
-  <main class="mx-auto max-w-5xl px-4">
-    <section id="about" class="mt-8 mb-8">
-      <div class="rounded-2xl border border-blue-400 bg-blue-700 text-blue-50 shadow-sm p-6">
-        <h1 class="text-3xl font-bold text-blue-50 mb-3">동우CNPACK</h1>
-        <p class="text-blue-50/90 leading-relaxed">식품 포장지, 비닐폴리백 전문 제조</p>
-      </div>
+  
+  <!-- 본문 -->
+  <main class="max-w-screen-lg mx-auto px-4 py-10 space-y-16">
+    <!-- 연락처 섹션 -->
+    <section id="contact" class="space-y-4">
+      <h2 class="text-2xl font-semibold">연락처</h2>
+      <p class="text-gray-700">전화: <a href="tel:+82-31-631-7284" class="text-blue-600 underline">031-631-7284</a></p>
+      <p class="text-gray-700">팩스: 031-631-7287</p>
+      <p class="text-gray-700">휴대폰: <a href="tel:+82-10-9002-8222" class="text-blue-600 underline">010-9002-8222</a></p>
+      <p class="text-gray-700">이메일: <a href="mailto:korea8222@hanmail.net" class="text-blue-600 underline">korea8222@hanmail.net</a></p>
     </section>
-    <section id="contact" class="mb-10">
-      <h2 class="text-2xl font-semibold text-gray-900 mb-4">연락처</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="space-y-3 rounded-xl bg-blue-700 text-blue-50 p-4 border border-blue-400">
-          <p class="mt-2"><strong>사무실 주소</strong> :
-            <span id="officeAddr">서울특별시 중구 다산로 29길 45</span>
-            <button class="ml-2 inline-flex items-center px-3 py-2 text-xs rounded border border-blue-300 text-white hover:bg-white/10 min-h-[40px]"
-              onclick="copyText('서울특별시 중구 다산로 29길 45', 'officeAddrCopied')">복사</button>
-            <span id="officeAddrCopied" class="ml-2 text-xs text-blue-100 hidden">복사됨!</span>
-          </p>
-
-          <p><strong>공장 주소</strong> :
-            <span id="factoryAddr">경기도 이천시 진상미로 1857-10</span>
-            <button class="ml-2 inline-flex items-center px-3 py-2 text-xs rounded border border-blue-300 text-white hover:bg-white/10 min-h-[40px]"
-              onclick="copyText('경기도 이천시 진상미로 1857-10', 'factoryAddrCopied')">복사</button>
-            <span id="factoryAddrCopied" class="ml-2 text-xs text-blue-100 hidden">복사됨!</span>
-          </p>
-
-          <p class="mt-2"><strong>Tel</strong> :
-            <span id="telText">031-631-7284</span>
-            <button class="ml-2 inline-flex items-center px-3 py-2 text-xs rounded border border-blue-300 text-white hover:bg-white/10 min-h-[40px]"
-              onclick="copyText('031-631-7284', 'telCopied')">복사</button>
-            <span id="telCopied" class="ml-2 text-xs text-blue-100 hidden">복사됨!</span>
-          </p>
-
-          <p><strong>Mobile</strong> :
-            <span id="mobileText">010-9002-8222</span>
-            <button class="ml-2 inline-flex items-center px-3 py-2 text-xs rounded border border-blue-300 text-white hover:bg-white/10 min-h-[40px]"
-              onclick="copyText('010-9002-8222', 'mobileCopied')">복사</button>
-            <span id="mobileCopied" class="ml-2 text-xs text-blue-100 hidden">복사됨!</span>
-          </p>
-
-          <p><strong>Fax</strong> :
-            <span id="faxText">031-631-7287</span>
-            <button class="ml-2 inline-flex items-center px-3 py-2 text-xs rounded border border-blue-300 text-white hover:bg-white/10 min-h-[40px]"
-              onclick="copyText('031-631-7287', 'faxCopied')">복사</button>
-            <span id="faxCopied" class="ml-2 text-xs text-blue-100 hidden">복사됨!</span>
-          </p>
-
-          <p><strong>E-mail</strong> :
-            <a class="text-white hover:text-blue-50 underline visited:text-white" href="mailto:korea8222@hanmail.net">korea8222@hanmail.net</a>
-            <button class="ml-2 inline-flex items-center px-3 py-2 text-xs rounded border border-blue-300 text-white hover:bg-white/10 min-h-[40px]"
-              onclick="copyText('korea8222@hanmail.net', 'emailCopied')">복사</button>
-            <span id="emailCopied" class="ml-2 text-xs text-blue-100 hidden">복사됨!</span>
-          </p>
-        </div>
-
-        <div class="space-y-3 flex flex-col justify-start">
-          <!-- Email inquiry button with black text -->
-          <a href="mailto:korea8222@hanmail.net?subject=%EB%AC%B8%EC%9D%98" class="px-4 py-2 inline-flex items-center justify-center rounded-lg bg-white text-black border border-white/20 hover:bg-blue-50/20">이메일 문의</a>
-        </div>
-      </div>
+    
+    <!-- 주소 섹션 -->
+    <section id="addresses" class="space-y-4">
+      <h2 class="text-2xl font-semibold">주소</h2>
+      <p class="text-gray-700"><strong>사무실:</strong> 서울 중구 다산로 29길 45(신당동)</p>
+      <p class="text-gray-700"><strong>공장:</strong> 경기도 이천시 진상미로 1857-10</p>
     </section>
-
-
-    <section id="maps" class="mb-16">
-      <h2 class="text-2xl font-semibold text-gray-900 mb-4">오시는 길</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-white text-gray-800 rounded-xl border border-white/20 p-3">
-          <h3 class="font-medium mb-2 text-blue-700">사무실</h3>
-          <div id="officeMap" class="w-full h-64 md:h-72 rounded-lg border border-brand-200"></div>
-          <!-- Move direction buttons under the map -->
-          <div class="mt-3 flex gap-2">
-            <a class="px-3 py-2 text-xs rounded border border-blue-300 text-blue-700 hover:bg-blue-50" target="_blank" rel="noopener" href="https://map.naver.com/v5/search/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C+%EC%A4%91%EA%B5%AC+%EB%8B%A4%EC%82%B0%EB%A1%9C+29%EA%B8%B8+45">네이버 길찾기</a>
-            <a class="px-3 py-2 text-xs rounded border border-blue-300 text-blue-700 hover:bg-blue-50" target="_blank" rel="noopener" href="https://map.kakao.com/link/search/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C+%EC%A4%91%EA%B5%AC+%EB%8B%A4%EC%82%B0%EB%A1%9C+29%EA%B8%B8+45">카카오 길찾기</a>
-          </div>
-          <p class="mt-2 text-sm text-gray-600">서울특별시 중구 다산로 29길 45</p>
-        </div>
-        <div class="bg-white text-gray-800 rounded-xl border border-white/20 p-3">
-          <h3 class="font-medium mb-2 text-blue-700">공장</h3>
-          <div id="factoryMap" class="w-full h-64 md:h-72 rounded-lg border border-brand-200"></div>
-          <!-- Move direction buttons under the map -->
-          <div class="mt-3 flex gap-2">
-            <a class="px-3 py-2 text-xs rounded border border-blue-300 text-blue-700 hover:bg-blue-50" target="_blank" rel="noopener" href="https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84+%EC%9D%B4%EC%B2%9C%EC%8B%9C+%EC%A7%84%EC%83%81%EB%AF%B8%EB%A1%9C+1857-10">네이버 길찾기</a>
-            <a class="px-3 py-2 text-xs rounded border border-blue-300 text-blue-700 hover:bg-blue-50" target="_blank" rel="noopener" href="https://map.kakao.com/link/search/%EA%B2%BD%EA%B8%B0%EB%8F%84+%EC%9D%B4%EC%B2%9C%EC%8B%9C+%EC%A7%84%EC%83%81%EB%AF%B8%EB%A1%9C+1857-10">카카오 길찾기</a>
-          </div>
-          <p class="mt-2 text-sm text-gray-600">경기도 이천시 진상미로 1857-10</p>
-        </div>
-      </div>
+    
+    <!-- 지도 섹션 (선택적으로 구글 지도 embed를 삽입하세요) -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold">오시는 길</h2>
+      <p class="text-gray-700">지도는 준비 중입니다. 구글 지도에서 회사 위치를 검색한 뒤, “공유 → 지도 퍼가기”를 통해 iframe 코드를 이곳에 붙여넣으실 수 있습니다.</p>
     </section>
   </main>
-
   
-  <footer class="border-t bg-white text-gray-700" style="padding-bottom: env(safe-area-inset-bottom);">
-    <div class="mx-auto max-w-5xl px-4 py-6 text-sm">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-1">
-        <div>© 동우CNPACK</div>
-        <div class="text-gray-600">사업자등록번호&nbsp;201-18-48413 · 대표자&nbsp;조남휘</div>
-      </div>
+  <!-- 푸터 -->
+  <footer class="border-t border-gray-200">
+    <div class="max-w-screen-lg mx-auto px-4 py-6 text-sm text-gray-600">
+      © 2025 동우 씨앤팩
     </div>
   </footer>
-
-
-  <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=bebb4d43642ffeb6f21dacdb60c80c08&libraries=services"></script>
-  <script>
-    function copyText(text, feedbackId) {
-      navigator.clipboard.writeText(text).then(() => {
-        const el = document.getElementById(feedbackId);
-        if (el) {
-          el.classList.remove('hidden');
-          setTimeout(() => el.classList.add('hidden'), 1200);
-        }
-      }).catch(() => { alert('복사에 실패했습니다.'); });
-    }
-
-    function renderMap(containerId, address) {
-      const container = document.getElementById(containerId);
-      const map = new kakao.maps.Map(container, {
-        center: new kakao.maps.LatLng(37.5665, 126.9780),
-        level: 5
-      });
-      const geocoder = new kakao.maps.services.Geocoder();
-      geocoder.addressSearch(address, function(result, status) {
-        if (status === kakao.maps.services.Status.OK && result.length > 0) {
-          const y = parseFloat(result[0].y);
-          const x = parseFloat(result[0].x);
-          const latlng = new kakao.maps.LatLng(y, x);
-          map.setCenter(latlng);
-          new kakao.maps.Marker({ map, position: latlng });
-        } else {
-          console.warn('주소를 찾지 못했습니다:', address, status);
-        }
-      });
-    }
-    renderMap('officeMap', '서울특별시 중구 다산로 29길 45');
-    renderMap('factoryMap', '경기도 이천시 진상미로 1857-10');
-  </script>
 </body>
 </html>
