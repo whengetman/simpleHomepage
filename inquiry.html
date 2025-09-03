@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#1f2a44" />
+  <title>견적/문의 | 동우CNPACK</title>
+  <meta name="description" content="동우CNPACK 견적 및 문의" />
+  <link rel="icon" href="logo.png" type="image/png"/>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container wrap">
+      <a href="index.html" class="brand">
+        <img src="logo.png" alt="로고" />
+        <span>동우CNPACK</span>
+      </a>
+      <nav>
+        <a href="index.html">홈</a>
+        <a href="company.html">기업 소개</a>
+        <a href="history.html">연혁</a>
+        <a href="products.html">제품 소개</a>
+        <a href="contact.html">연락처</a>
+        <a href="maps.html">오시는 길</a>
+        <a href="inquiry.html" class="active">견적/문의</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>견적/문의</h2>
+      <form id="inquiryForm" class="form" onsubmit="event.preventDefault(); buildInquiryMailto();">
+        <div class="cols cols-2">
+          <div>
+            <label for="q_company">회사명</label>
+            <input type="text" id="q_company" placeholder="예) 동우CNPACK">
+          </div>
+          <div>
+            <label for="q_person">담당자명</label>
+            <input type="text" id="q_person" placeholder="예) 홍길동">
+          </div>
+        </div>
+
+        <div class="cols cols-2">
+          <div>
+            <label for="q_phone">연락처</label>
+            <input type="tel" id="q_phone" placeholder="예) 010-0000-0000">
+          </div>
+          <div>
+            <label for="q_email">이메일</label>
+            <input type="email" id="q_email" placeholder="예) user@example.com" value="korea8222@hanmail.net">
+          </div>
+        </div>
+
+        <div class="cols cols-3">
+          <div>
+            <label for="q_product">제품 종류</label>
+            <select id="q_product">
+              <option value="식품 포장지">식품 포장지</option>
+              <option value="비닐폴리백">비닐폴리백</option>
+              <option value="인쇄 포장">인쇄 포장</option>
+              <option value="지퍼백">지퍼백</option>
+              <option value="기타">기타</option>
+            </select>
+          </div>
+          <div>
+            <label for="q_width">가로 (mm)</label>
+            <input type="text" id="q_width" placeholder="예) 200">
+          </div>
+          <div>
+            <label for="q_height">세로 (mm)</label>
+            <input type="text" id="q_height" placeholder="예) 300">
+          </div>
+        </div>
+
+        <div class="cols cols-3">
+          <div>
+            <label for="q_thickness">두께 (μm)</label>
+            <input type="text" id="q_thickness" placeholder="예) 50">
+          </div>
+          <div>
+            <label for="q_qty">수량</label>
+            <input type="text" id="q_qty" placeholder="예) 10,000장">
+          </div>
+          <div>
+            <label for="q_printing">인쇄</label>
+            <input type="text" id="q_printing" placeholder="예) 1도 단면 / 2도 양면">
+          </div>
+        </div>
+
+        <div>
+          <label for="q_use">용도</label>
+          <input type="text" id="q_use" placeholder="예) 냉동식품 포장 / 건식 제품 포장 등">
+        </div>
+
+        <div>
+          <label for="q_memo">요청사항</label>
+          <textarea id="q_memo" placeholder="납기, 포장 방식, 배송지 등 추가 요청사항을 적어주세요."></textarea>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="cols cols-2">
+          <div>
+            <label for="q_to">수신 이메일 (변경 가능)</label>
+            <input type="email" id="q_to" value="korea8222@hanmail.net">
+            <div class="help">메일 앱이 열리며, 입력한 내용이 본문으로 채워집니다.</div>
+          </div>
+          <div class="row" style="gap:10px; align-items:flex-end;">
+            <button type="submit" class="btn">메일로 보내기</button>
+            <button type="button" class="btn" onclick="copyInquirySummary()">내용 복사</button>
+          </div>
+        </div>
+
+        <p class="note">* 첨부파일이 있을 경우, 메일 앱이 열린 뒤 파일을 첨부해 보내주세요.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container wrap">
+      <div>© 동우CNPACK</div>
+      <div class="small">사업자등록번호&nbsp;201-18-48413 · 대표자&nbsp;조남휘</div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

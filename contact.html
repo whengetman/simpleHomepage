@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#1f2a44" />
+  <title>연락처 | 동우CNPACK</title>
+  <meta name="description" content="동우CNPACK 연락처" />
+  <link rel="icon" href="logo.png" type="image/png"/>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container wrap">
+      <a href="index.html" class="brand">
+        <img src="logo.png" alt="로고" />
+        <span>동우CNPACK</span>
+      </a>
+      <nav>
+        <a href="index.html">홈</a>
+        <a href="company.html">기업 소개</a>
+        <a href="history.html">연혁</a>
+        <a href="products.html">제품 소개</a>
+        <a href="contact.html" class="active">연락처</a>
+        <a href="maps.html">오시는 길</a>
+        <a href="inquiry.html">견적/문의</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>연락처</h2>
+      <div class="grid grid-2">
+        <div>
+          <p class="row"><strong>사무실 주소</strong>&nbsp;:&nbsp;<span id="officeAddr">서울특별시 중구 다산로 29길 45</span>
+            <button class="btn copy" onclick="copyText('서울특별시 중구 다산로 29길 45','officeCopied')">복사</button>
+            <span id="officeCopied" class="copy-done">복사됨!</span>
+          </p>
+          <p class="row"><strong>공장 주소</strong>&nbsp;:&nbsp;<span id="factoryAddr">경기도 이천시 진상미로 1857-10</span>
+            <button class="btn copy" onclick="copyText('경기도 이천시 진상미로 1857-10','factoryCopied')">복사</button>
+            <span id="factoryCopied" class="copy-done">복사됨!</span>
+          </p>
+          <p class="row"><strong>Tel</strong>&nbsp;:&nbsp;<span id="telText">031-631-7284</span>
+            <button class="btn copy" onclick="copyText('031-631-7284','telCopied')">복사</button>
+            <span id="telCopied" class="copy-done">복사됨!</span>
+          </p>
+          <p class="row"><strong>Mobile</strong>&nbsp;:&nbsp;<span id="mobileText">010-9002-8222</span>
+            <button class="btn copy" onclick="copyText('010-9002-8222','mobileCopied')">복사</button>
+            <span id="mobileCopied" class="copy-done">복사됨!</span>
+          </p>
+          <p class="row"><strong>Fax</strong>&nbsp;:&nbsp;<span id="faxText">031-631-7287</span>
+            <button class="btn copy" onclick="copyText('031-631-7287','faxCopied')">복사</button>
+            <span id="faxCopied" class="copy-done">복사됨!</span>
+          </p>
+          <p class="row"><strong>E-mail</strong>&nbsp;:&nbsp;<a href="mailto:korea8222@hanmail.net">korea8222@hanmail.net</a>
+            <button class="btn copy" onclick="copyText('korea8222@hanmail.net','emailCopied')">복사</button>
+            <span id="emailCopied" class="copy-done">복사됨!</span>
+          </p>
+          <div style="margin-top:12px">
+            <a class="btn" href="mailto:korea8222@hanmail.net?subject=%EB%AC%B8%EC%9D%98">이메일 문의</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container wrap">
+      <div>© 동우CNPACK</div>
+      <div class="small">사업자등록번호&nbsp;201-18-48413 · 대표자&nbsp;조남휘</div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
