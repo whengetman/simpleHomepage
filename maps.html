@@ -3,86 +3,148 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#1f2a44" />
+  <meta name="theme-color" content="#0f1e3d" />
   <title>오시는 길 | 동우CNPACK</title>
-  <meta name="description" content="동우CNPACK 오시는 길" />
+  <meta name="description" content="동우CNPACK 오시는 길 — 서울 사무소(중구 다산로 29길 45) 및 이천 공장(진상미로 1857-10)." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dongwoocnpack.com/maps.html" />
+  <meta property="og:title" content="오시는 길 | 동우CNPACK" />
+  <meta property="og:description" content="동우CNPACK 서울 사무소 및 이천 공장 위치 안내." />
+  <meta property="og:image" content="https://dongwoocnpack.com/logo.png" />
+  <link rel="canonical" href="https://dongwoocnpack.com/maps.html" />
   <link rel="icon" href="logo.png" type="image/png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <div class="container wrap">
+
+<header>
+  <div class="container">
+    <div class="header-inner">
       <a href="index.html" class="brand">
-        <img src="logo.png" alt="로고" />
-        <span>동우CNPACK</span>
+        <img src="logo.png" alt="동우CNPACK 로고" onerror="this.style.display='none'" />
+        동우<span>CNPACK</span>
       </a>
       <nav>
-        <a href="index.html">홈</a>
         <a href="company.html">기업 소개</a>
         <a href="history.html">연혁</a>
         <a href="products.html">제품 소개</a>
         <a href="contact.html">연락처</a>
         <a href="maps.html" class="active">오시는 길</a>
-        <a href="inquiry.html">견적/문의</a>
+        <a href="inquiry.html" class="cta">견적/문의</a>
       </nav>
+      <div class="ham" id="hamBtn" onclick="toggleMenu()" aria-label="메뉴">
+        <span></span><span></span><span></span>
+      </div>
     </div>
-  </header>
+    <div id="mobile-nav">
+      <a href="company.html" onclick="toggleMenu()">기업 소개</a>
+      <a href="history.html" onclick="toggleMenu()">연혁</a>
+      <a href="products.html" onclick="toggleMenu()">제품 소개</a>
+      <a href="contact.html" onclick="toggleMenu()">연락처</a>
+      <a href="maps.html" onclick="toggleMenu()">오시는 길</a>
+      <a href="inquiry.html" onclick="toggleMenu()">견적/문의</a>
+      <a href="tel:031-631-7284" style="color:var(--accent);font-weight:700">📞 031-631-7284</a>
+    </div>
+  </div>
+</header>
 
-  <main class="container">
-    <section>
-      <h2>오시는 길</h2>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>사무실</h3>
-          <div id="officeMap" class="map"></div>
-          <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap">
-            <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://map.naver.com/v5/search/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%A4%91%EA%B5%AC%20%EB%8B%A4%EC%82%B0%EB%A1%9C%2029%EA%B8%B8%2045">네이버 길찾기</a>
-            <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://map.kakao.com/link/search/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%A4%91%EA%B5%AC%20%EB%8B%A4%EC%82%B0%EB%A1%9C%2029%EA%B8%B8%2045">카카오 길찾기</a>
+<div class="page-hero">
+  <div class="container">
+    <div class="page-hero-eyebrow">Directions</div>
+    <h1>오시는 길</h1>
+    <p>서울 사무소와 경기도 이천 공장으로 오시는 방법을 안내합니다.</p>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+
+    <section class="reveal">
+      <div class="maps-grid">
+        <div class="map-card">
+          <div class="map-card-head">
+            <div style="display:flex;align-items:center">
+              <span class="map-dot"></span>
+              <span class="map-head-title">사무실</span>
+            </div>
+            <div class="map-head-addr">서울특별시 중구 다산로 29길 45</div>
           </div>
-          <p class="small" style="margin-top:6px">서울특별시 중구 다산로 29길 45</p>
+          <div id="officeMap" class="map"></div>
+          <div class="map-actions">
+            <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://map.naver.com/v5/search/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%A4%91%EA%B5%AC%20%EB%8B%A4%EC%82%B0%EB%A1%9C%2029%EA%B8%B8%2045">🗺 네이버 길찾기</a>
+            <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://map.kakao.com/link/search/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%A4%91%EA%B5%AC%20%EB%8B%A4%EC%82%B0%EB%A1%9C%2029%EA%B8%B8%2045">🗺 카카오 길찾기</a>
+          </div>
         </div>
 
-        <div class="card">
-          <h3>공장</h3>
-          <div id="factoryMap" class="map"></div>
-          <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap">
-            <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%9D%B4%EC%B2%9C%EC%8B%9C%20%EC%A7%84%EC%83%81%EB%AF%B8%EB%A1%9C%201857-10">네이버 길찾기</a>
-            <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://map.kakao.com/link/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%9D%B4%EC%B2%9C%EC%8B%9C%20%EC%A7%84%EC%83%81%EB%AF%B8%EB%A1%9C%201857-10">카카오 길찾기</a>
+        <div class="map-card">
+          <div class="map-card-head">
+            <div style="display:flex;align-items:center">
+              <span class="map-dot" style="background:var(--accent)"></span>
+              <span class="map-head-title">공장</span>
+            </div>
+            <div class="map-head-addr">경기도 이천시 진상미로 1857-10</div>
           </div>
-          <p class="small" style="margin-top:6px">경기도 이천시 진상미로 1857-10</p>
+          <div id="factoryMap" class="map"></div>
+          <div class="map-actions">
+            <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%9D%B4%EC%B2%9C%EC%8B%9C%20%EC%A7%84%EC%83%81%EB%AF%B8%EB%A1%9C%201857-10">🗺 네이버 길찾기</a>
+            <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://map.kakao.com/link/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%9D%B4%EC%B2%9C%EC%8B%9C%20%EC%A7%84%EC%83%81%EB%AF%B8%EB%A1%9C%201857-10">🗺 카카오 길찾기</a>
+          </div>
         </div>
       </div>
     </section>
-  </main>
 
-  <footer>
-    <div class="container wrap">
-      <div>© 동우CNPACK</div>
-      <div class="small">사업자등록번호&nbsp;201-18-48413 · 대표자&nbsp;조남휘</div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">동우<span>CNPACK</span></div>
+        <div class="footer-info">
+          <strong>사업자등록번호</strong>&nbsp;201-18-48413&nbsp;&nbsp;
+          <strong>대표자</strong>&nbsp;조남휘<br/>
+          <strong>사무실</strong>&nbsp;서울특별시 중구 다산로 29길 45<br/>
+          <strong>공장</strong>&nbsp;경기도 이천시 진상미로 1857-10
+        </div>
+      </div>
+      <div class="footer-right">
+        <div style="font-size:14px; color:rgba(255,255,255,.9); font-weight:700; margin-bottom:8px">문의하기</div>
+        <div style="margin-bottom:4px"><a href="tel:031-631-7284" style="color:var(--accent); font-weight:700; font-size:16px">031-631-7284</a></div>
+        <div style="margin-bottom:2px"><a href="mailto:korea8222@hanmail.net" style="color:rgba(255,255,255,.6)">korea8222@hanmail.net</a></div>
+        <div><a href="mailto:skagnl6855@naver.com" style="color:rgba(255,255,255,.6)">skagnl6855@naver.com</a></div>
+      </div>
     </div>
-  </footer>
+    <div class="footer-copy">© 2026 동우CNPACK. All rights reserved.</div>
+  </div>
+</footer>
 
-  <!-- 카카오 지도 SDK -->
-  <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=bebb4d43642ffeb6f21dacdb60c80c08&libraries=services"></script>
-  <script>
-    function renderMap(containerId, address){
-      var container = document.getElementById(containerId);
-      if (!container) return;
-      var map = new kakao.maps.Map(container, { center: new kakao.maps.LatLng(37.5665,126.9780), level:5 });
-      var geocoder = new kakao.maps.services.Geocoder();
-      geocoder.addressSearch(address, function(result, status){
-        if (status === kakao.maps.services.Status.OK && result.length){
-          var latlng = new kakao.maps.LatLng(parseFloat(result[0].y), parseFloat(result[0].x));
-          map.setCenter(latlng);
-          new kakao.maps.Marker({ map: map, position: latlng });
-        } else {
-          console.warn('주소를 찾지 못했습니다:', address, status);
-        }
-      });
-    }
+<script src="script.js"></script>
+<!-- 카카오 지도 SDK -->
+<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=bebb4d43642ffeb6f21dacdb60c80c08&libraries=services"></script>
+<script>
+  function renderMap(containerId, address) {
+    var container = document.getElementById(containerId);
+    if (!container) return;
+    var map = new kakao.maps.Map(container, { center: new kakao.maps.LatLng(37.5665, 126.9780), level: 5 });
+    var geocoder = new kakao.maps.services.Geocoder();
+    geocoder.addressSearch(address, function(result, status) {
+      if (status === kakao.maps.services.Status.OK && result.length) {
+        var latlng = new kakao.maps.LatLng(parseFloat(result[0].y), parseFloat(result[0].x));
+        map.setCenter(latlng);
+        new kakao.maps.Marker({ map: map, position: latlng });
+      } else {
+        console.warn('주소를 찾지 못했습니다:', address, status);
+      }
+    });
+  }
+  kakao.maps.load(function() {
     renderMap('officeMap', '서울특별시 중구 다산로 29길 45');
     renderMap('factoryMap', '경기도 이천시 진상미로 1857-10');
-  </script>
-  <script src="script.js"></script>
+  });
+</script>
 </body>
 </html>
