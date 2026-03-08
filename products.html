@@ -29,7 +29,7 @@
       </a>
       <nav>
         <a href="company.html">기업 소개</a>
-        <a href="history.html">연혁</a>
+        <a href="history.html" class="nav-disabled">연혁</a>
         <a href="products.html" class="active">제품 소개</a>
         <a href="contact.html">연락처</a>
         <a href="maps.html">오시는 길</a>
@@ -41,7 +41,7 @@
     </div>
     <div id="mobile-nav">
       <a href="company.html" onclick="toggleMenu()">기업 소개</a>
-      <a href="history.html" onclick="toggleMenu()">연혁</a>
+      <a href="history.html" class="nav-disabled" onclick="toggleMenu()">연혁</a>
       <a href="products.html" onclick="toggleMenu()">제품 소개</a>
       <a href="contact.html" onclick="toggleMenu()">연락처</a>
       <a href="maps.html" onclick="toggleMenu()">오시는 길</a>
@@ -61,6 +61,19 @@
 
 <main>
   <div class="container">
+
+    <section class="reveal" style="margin-bottom:48px">
+      <h2 style="font-size:1.25rem;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--accent)">제품 카탈로그</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
+        <a href="assets/img/product.jpg" target="_blank" style="display:block;border-radius:10px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.12)">
+          <img src="assets/img/product.jpg" alt="동우CNPACK 제품 카탈로그 1" style="width:100%;display:block" />
+        </a>
+        <a href="assets/img/product2.jpg" target="_blank" style="display:block;border-radius:10px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.12)">
+          <img src="assets/img/product2.jpg" alt="동우CNPACK 제품 카탈로그 2" style="width:100%;display:block" />
+        </a>
+      </div>
+      <p class="small" style="margin-top:10px;color:#666">※ 이미지를 클릭하면 크게 볼 수 있습니다.</p>
+    </section>
 
     <section class="reveal">
       <div class="products-grid">

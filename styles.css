@@ -59,6 +59,9 @@ nav .cta {
 }
 nav .cta:hover { background: #f0b030; }
 nav .cta.active { background: #f0b030; }
+nav a.nav-disabled, #mobile-nav a.nav-disabled {
+  opacity: .35; pointer-events: none; cursor: default;
+}
 
 /* ── HAMBURGER ────────────────────────────────────────────── */
 .ham { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
