@@ -252,27 +252,13 @@
     <section id="products" class="reveal">
       <div class="section-label">Products</div>
       <div class="section-title">주요 제품</div>
-      <div class="products-grid">
-        <div class="product-card">
-          <div class="prod-icon">🛍️</div>
-          <div class="prod-name">비닐폴리백</div>
-          <div class="prod-desc">다양한 규격의 투명·유색 폴리백. 식품 포장용 위생 인증 소재 사용.</div>
-        </div>
-        <div class="product-card">
-          <div class="prod-icon">🍱</div>
-          <div class="prod-name">식품 포장지</div>
-          <div class="prod-desc">냉동·냉장·상온 식품에 맞는 특성별 포장지. OPP, PE, 나일론 등.</div>
-        </div>
-        <div class="product-card">
-          <div class="prod-icon">🎨</div>
-          <div class="prod-name">인쇄 포장재</div>
-          <div class="prod-desc">브랜드 로고·디자인 인쇄. 고객 맞춤 색상·패턴 제작 가능.</div>
-        </div>
-        <div class="product-card">
-          <div class="prod-icon">📋</div>
-          <div class="prod-name">기타 포장재</div>
-          <div class="prod-desc">지퍼백, 진공 포장재 등 특수 목적 포장재 제조 및 공급.</div>
-        </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
+        <a href="assets/img/product.jpg" target="_blank" style="display:block;border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.12)">
+          <img src="assets/img/product.jpg" alt="동우CNPACK 제품 카탈로그 1" style="width:100%;display:block" />
+        </a>
+        <a href="assets/img/product2.jpg" target="_blank" style="display:block;border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.12)">
+          <img src="assets/img/product2.jpg" alt="동우CNPACK 제품 카탈로그 2" style="width:100%;display:block" />
+        </a>
       </div>
       <div style="margin-top:20px; text-align:center">
         <a href="products.html" class="btn btn-primary">전체 제품 보기 →</a>
@@ -280,7 +266,7 @@
     </section>
 
     <!-- 연락처 -->
-    <section id="contact" class="reveal">
+    <section id="contact" class="reveal" style="display:none">
       <div class="section-label">Contact</div>
       <div class="section-title">연락처</div>
       <div class="contact-card">
@@ -332,7 +318,7 @@
     </section>
 
     <!-- 오시는 길 -->
-    <section id="maps" class="reveal">
+    <section id="maps" class="reveal" style="display:none">
       <div class="section-label">Directions</div>
       <div class="section-title">오시는 길</div>
       <div class="maps-grid">
