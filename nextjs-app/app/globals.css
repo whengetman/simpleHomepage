@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --navy: #0f1e3d;
+    --navy2: #1a2f5e;
+    --blue: #1d5fad;
+    --accent: #e8a020;
+    --white: #ffffff;
+    --off: #f4f7fc;
+    --border: #dde4ef;
+    --ink: #1a2030;
+    --muted: #5a6a82;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-off text-ink font-noto antialiased;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@layer utilities {
+  .section-label {
+    @apply text-[11px] font-bold tracking-[3px] uppercase text-brand-blue mb-1.5;
+  }
+
+  .section-title {
+    @apply text-2xl md:text-[30px] font-black text-navy tracking-tight mb-6;
+  }
+
+  .page-hero-eyebrow {
+    @apply inline-block text-[11px] font-bold tracking-[3px] uppercase text-accent
+      bg-accent/10 border border-accent/30 px-3 py-1 rounded-full mb-3.5;
+  }
+}
