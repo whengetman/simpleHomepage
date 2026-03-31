@@ -42,21 +42,21 @@ export default function Home() {
         <span className="text-[10px] text-gray-400">Since 1990 · 이천 공장 직영</span>
       </div>
 
-      {/* ── HERO: 단색 배경 ── */}
-      <section className="bg-gray-900 text-white" style={{ minHeight: '88vh' }}>
+      {/* ── HERO: 순수 블랙 배경 ── */}
+      <section className="bg-black text-white" style={{ minHeight: '88vh' }}>
         <div className="max-w-7xl mx-auto px-6 sm:px-10 flex flex-col justify-end h-full pb-20 pt-36" style={{ minHeight: '88vh' }}>
           <Badge
             variant="outline"
-            className="w-fit mb-6 border-white/30 text-white/60 text-[10px] tracking-[4px] uppercase"
+            className="w-fit mb-6 border-white/20 text-gray-400 text-[10px] tracking-[4px] uppercase"
           >
             식품 포장 전문 제조
           </Badge>
-          <h1 className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter leading-[0.9] mb-8">
-            <span className="text-white">포장이</span><br />
+          <h1 className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter leading-[0.9] mb-8 text-white">
+            <span>포장이</span><br />
             <span className="text-gray-500">곧</span><br />
-            <span className="text-white">브랜드</span>
+            <span>브랜드</span>
           </h1>
-          <p className="text-gray-400 text-base sm:text-lg max-w-md mb-10 leading-relaxed">
+          <p className="text-gray-500 text-base sm:text-lg max-w-md mb-10 leading-relaxed">
             30년 경력의 식품 포장지·비닐폴리백 전문 제조업체.
             이천 공장 직영으로 처음부터 끝까지 품질을 책임집니다.
           </p>
@@ -64,7 +64,7 @@ export default function Home() {
             <Button
               asChild
               size="lg"
-              className="rounded-full bg-white text-gray-900 hover:bg-gray-100 font-bold px-8"
+              className="rounded-full bg-white text-black hover:bg-gray-100 font-bold px-8"
             >
               <a href="tel:031-631-7284">
                 <Phone className="w-4 h-4 mr-2" />031-631-7284
@@ -74,7 +74,7 @@ export default function Home() {
               asChild
               size="lg"
               variant="outline"
-              className="rounded-full border border-gray-700 text-gray-300 hover:border-gray-400 bg-transparent px-8"
+              className="rounded-full border-gray-800 text-gray-400 hover:border-gray-600 hover:text-gray-200 bg-transparent px-8"
             >
               <Link href="/products">제품 보기</Link>
             </Button>
