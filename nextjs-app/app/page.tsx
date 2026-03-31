@@ -53,7 +53,7 @@ export default function Home() {
           </Badge>
           <h1 className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter leading-[0.9] mb-8 text-white">
             <span>포장이</span><br />
-            <span className="text-gray-500">곧</span><br />
+            <span>곧</span><br />
             <span>브랜드</span>
           </h1>
           <p className="text-gray-500 text-base sm:text-lg max-w-md mb-10 leading-relaxed">
@@ -74,7 +74,7 @@ export default function Home() {
               asChild
               size="lg"
               variant="outline"
-              className="rounded-full border-gray-800 text-gray-400 hover:border-gray-600 hover:text-gray-200 bg-transparent px-8"
+              className="rounded-full bg-white text-gray-900 hover:bg-gray-100 font-bold px-8"
             >
               <Link href="/products">제품 보기</Link>
             </Button>

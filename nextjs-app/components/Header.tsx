@@ -28,7 +28,7 @@ export default function Header() {
     <header className={cn('sticky top-0 z-50 w-full transition-all duration-300',
       scrolled ? 'bg-white/90 backdrop-blur-md border-b border-gray-200/80' : 'bg-white border-b border-gray-200')}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-14">
-        <Link href="/" className="font-bold text-lg text-gray-900 tracking-tight">동우CNPACK</Link>
+        <Link href="/" className="text-lg text-gray-900 tracking-tight" style={{ fontFamily: "'Noto Serif KR', serif", fontWeight: 700 }}>동우씨앤팩</Link>
         <nav className="hidden md:flex items-center gap-1">
           {navLinks.map(link => (
             <Link key={link.href} href={link.href}
