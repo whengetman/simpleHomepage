@@ -1,121 +1,154 @@
-import type { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-
-export const metadata: Metadata = {
-  title: '동우CNPACK | 식품 포장지·비닐폴리백 전문 제조',
-  description: '동우CNPACK은 30년 경력의 식품 포장지 및 비닐폴리백 전문 제조업체입니다. 고품질 포장재를 합리적인 가격으로 공급합니다.',
-  alternates: { canonical: 'https://dongwoocnpack.com/' },
-}
+import Link from 'next/link';
+import { ArrowRight, Package, Printer, ShieldCheck, Truck, ChevronRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 
 const features = [
-  { icon: '🏭', title: '직접 제조', sub: '이천 공장 직영 운영' },
-  { icon: '🔬', title: '품질 관리', sub: '식품 등급 소재 사용' },
-  { icon: '📦', title: '맞춤 제작', sub: '규격·디자인 커스터마이징' },
-  { icon: '🚚', title: '신속 납품', sub: '소량·대량 모두 대응' },
-]
+  { icon: ShieldCheck, title: '식품 등급 소재', desc: '위생·안전 인증 소재만 사용합니다' },
+  { icon: Package,     title: '직접 제조',     desc: '이천 공장 직영으로 품질을 관리합니다' },
+  { icon: Printer,     title: '맞춤 인쇄',     desc: '브랜드 디자인 인쇄 제작이 가능합니다' },
+  { icon: Truck,       title: '신속 납품',     desc: '소량·대량 모두 빠르게 납품합니다' },
+];
 
-const productImages = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+const products = [
+  { name: '비닐폴리백',  desc: '투명·유색 다양한 규격의 식품용 폴리백',   tag: '베스트' },
+  { name: '식품 포장지', desc: 'OPP·PE·나일론 등 용도별 맞춤 포장지',    tag: null },
+  { name: '인쇄 포장재', desc: '로고·디자인 인쇄 맞춤 제작',             tag: '인기' },
+  { name: '지퍼백·진공', desc: '특수 목적용 포장재 제조 및 공급',         tag: null },
+];
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <>
-      {/* ── HERO ─────────────────────────────── */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-navy via-navy-2 to-[#204080] text-white py-[72px] pb-16">
-        {/* decorative radials */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 80% at 90% 20%, rgba(29,95,173,.35) 0%, transparent 60%), radial-gradient(ellipse 40% 60% at 5% 90%, rgba(232,160,32,.12) 0%, transparent 55%)' }} />
+    <main>
+      {/* ── HERO ── */}
+      <section className="relative overflow-hidden bg-white">
+        {/* 배경 장식 */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50 rounded-bl-[80px]" />
+          <div className="absolute bottom-12 right-12 w-64 h-64 rounded-full bg-amber-50 blur-3xl opacity-60" />
         </div>
 
-        <div className="container relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10 items-center">
-            <div>
-              <div className="page-hero-eyebrow mb-4">식품 포장 전문 제조</div>
-              <h1 className="text-[clamp(32px,5vw,54px)] font-black leading-[1.2] tracking-tight text-white mb-4">
-                포장이 곧<br />
-                <em className="text-accent not-italic">브랜드</em>입니다
-              </h1>
-              <p className="text-white/75 text-[16px] leading-[1.7] max-w-[480px] mb-7">
-                동우CNPACK은 식품 포장지와 비닐폴리백을 전문으로 제조합니다.<br />
-                고품질 소재와 정밀한 공정으로 고객의 제품을 더욱 빛나게 합니다.
-              </p>
-              <div className="flex gap-2.5 flex-wrap">
-                <Button variant="accent" size="hero" asChild>
-                  <Link href="/inquiry">📋 견적 문의하기</Link>
-                </Button>
-                <Button variant="hero-outline" size="hero" asChild>
-                  <a href="#products">제품 보기 →</a>
-                </Button>
-              </div>
-            </div>
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-24 md:py-32">
+          <div className="max-w-xl animate-fade-up">
+            <Badge variant="outline" className="mb-6 text-amber-600 border-amber-200 bg-amber-50 rounded-full px-4 py-1 text-xs font-semibold tracking-wider uppercase">
+              식품 포장 전문 제조
+            </Badge>
 
-            {/* 30+ badge */}
-            <div className="hidden sm:flex flex-col items-center justify-center bg-white/7 border border-white/15 rounded-2xl p-6 min-w-[170px] text-center">
-              <div className="font-bebas text-[52px] text-accent leading-none">30+</div>
-              <div className="text-[13px] text-white/70 mt-1">년 제조 경력</div>
+            <h1 className="font-display text-5xl md:text-6xl text-slate-900 leading-tight mb-6">
+              포장이 곧<br />
+              <span className="text-amber-500 italic">브랜드</span>입니다
+            </h1>
+
+            <p className="text-slate-500 text-lg leading-relaxed mb-8">
+              동우CNPACK은 식품 포장지와 비닐폴리백을 전문으로 제조합니다.
+              고품질 소재와 정밀한 공정으로 고객의 제품을 더욱 빛나게 합니다.
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              <a href="tel:031-631-7284">
+                <Button size="lg" className="bg-slate-900 hover:bg-slate-700 text-white rounded-full px-6 gap-2">
+                  지금 문의하기
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </a>
+              <Link href="/products">
+                <Button size="lg" variant="outline" className="rounded-full px-6 gap-2 border-slate-200 text-slate-700">
+                  제품 보기
+                  <ChevronRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+
+          {/* 통계 뱃지 */}
+          <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-4 animate-fade-up animate-fade-up-delay-3">
+            <div className="bg-white rounded-2xl shadow-lg border border-slate-100 px-6 py-4 text-center">
+              <div className="font-display text-4xl text-slate-900">30<span className="text-amber-500">+</span></div>
+              <div className="text-xs text-slate-500 mt-1">년 제조 경력</div>
+            </div>
+            <div className="bg-slate-900 rounded-2xl px-6 py-4 text-center">
+              <div className="font-display text-4xl text-white">100<span className="text-amber-400">%</span></div>
+              <div className="text-xs text-slate-400 mt-1">직접 제조</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── FEATURES STRIP ───────────────────── */}
-      <div className="bg-navy border-t border-white/8">
-        <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4">
-            {features.map((f, i) => (
-              <div
-                key={f.title}
-                className={`flex items-center gap-3.5 py-5 px-6 ${i < features.length - 1 ? 'border-r border-white/8' : ''}`}
-              >
-                <div className="w-10 h-10 rounded-[10px] bg-brand-blue/30 flex items-center justify-center text-xl shrink-0">
-                  {f.icon}
-                </div>
-                <div>
-                  <div className="text-[13px] font-bold text-white">{f.title}</div>
-                  <div className="text-[11px] text-white/50 mt-0.5">{f.sub}</div>
-                </div>
+      {/* ── FEATURES ── */}
+      <section className="bg-slate-900 py-14">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-slate-700 rounded-2xl overflow-hidden">
+            {features.map(({ icon: Icon, title, desc }) => (
+              <div key={title} className="bg-slate-900 px-6 py-7">
+                <Icon className="w-6 h-6 text-amber-400 mb-3" />
+                <div className="text-white text-sm font-semibold mb-1">{title}</div>
+                <div className="text-slate-500 text-xs leading-relaxed">{desc}</div>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* ── PRODUCTS SECTION ─────────────────── */}
-      <main className="py-12 md:py-16">
-        <div className="container">
-          <section id="products" className="animate-fade-up">
-            <div className="section-label">Products</div>
-            <div className="section-title">주요 제품</div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5">
-              {productImages.map((n) => (
-                <a
-                  key={n}
-                  href={`/assets/img/product${n}.jpg`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block rounded-[10px] overflow-hidden shadow-card hover:shadow-card-lg transition-shadow"
-                >
-                  <Image
-                    src={`/assets/img/product${n}.jpg`}
-                    alt={`제품 ${n}`}
-                    width={400}
-                    height={400}
-                    className="w-full aspect-square object-cover block"
-                  />
-                </a>
-              ))}
+      {/* ── PRODUCTS ── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="flex items-end justify-between mb-10">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-amber-500 mb-2">Products</p>
+              <h2 className="font-display text-3xl md:text-4xl text-slate-900">주요 제품</h2>
             </div>
+            <Link href="/products" className="hidden sm:flex items-center gap-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">
+              전체 보기 <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
 
-            <div className="mt-5 text-center">
-              <Button variant="default" size="lg" asChild>
-                <Link href="/products">전체 제품 보기 →</Link>
-              </Button>
-            </div>
-          </section>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {products.map(({ name, desc, tag }) => (
+              <div
+                key={name}
+                className="group relative bg-white border border-slate-100 rounded-2xl p-6 hover:border-slate-300 hover:shadow-md transition-all duration-300"
+              >
+                {tag && (
+                  <Badge className="absolute top-4 right-4 bg-amber-100 text-amber-700 border-amber-200 rounded-full text-xs">
+                    {tag}
+                  </Badge>
+                )}
+                <div className="w-10 h-10 rounded-xl bg-slate-100 group-hover:bg-amber-50 transition-colors flex items-center justify-center mb-4">
+                  <Package className="w-5 h-5 text-slate-600 group-hover:text-amber-500 transition-colors" />
+                </div>
+                <h3 className="font-semibold text-slate-900 mb-2">{name}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
-    </>
-  )
+      </section>
+
+      {/* ── CTA ── */}
+      <section className="py-20 bg-slate-50 section-divider">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+          <p className="text-xs font-semibold uppercase tracking-widest text-amber-500 mb-3">Contact</p>
+          <h2 className="font-display text-3xl md:text-4xl text-slate-900 mb-4">
+            지금 바로 문의하세요
+          </h2>
+          <p className="text-slate-500 mb-8 leading-relaxed">
+            제품 견적, 납기, 맞춤 제작 등 어떤 문의도 환영합니다.<br />
+            친절하게 안내해드리겠습니다.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <a href="tel:031-631-7284">
+              <Button size="lg" className="bg-slate-900 hover:bg-slate-700 text-white rounded-full px-8">
+                031-631-7284 전화하기
+              </Button>
+            </a>
+            <Link href="/inquiry">
+              <Button size="lg" variant="outline" className="rounded-full px-8 border-slate-200 text-slate-700">
+                온라인 문의
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
 }
