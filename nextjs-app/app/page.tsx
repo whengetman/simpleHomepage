@@ -48,7 +48,7 @@ export default function Home() {
           src="/assets/img/gravure-press-1.jpg"
           alt="그라비아 인쇄 프레스 제조 현장"
           fill
-          className="object-cover opacity-35"
+          className="object-cover opacity-30"
           priority
         />
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 flex flex-col justify-end h-full pb-20 pt-36">
@@ -58,10 +58,10 @@ export default function Home() {
           >
             식품 포장 전문 제조
           </Badge>
-          <h1 className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter leading-[0.9] mb-8">
+          <h1 className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter leading-[0.9] mb-8 drop-shadow-lg">
             포장이<br />곧<br />브랜드
           </h1>
-          <p className="text-white/60 text-base sm:text-lg max-w-md mb-10 leading-relaxed">
+          <p className="text-white/80 text-base sm:text-lg max-w-md mb-10 leading-relaxed">
             30년 경력의 식품 포장지·비닐폴리백 전문 제조업체.
             이천 공장 직영으로 처음부터 끝까지 품질을 책임집니다.
           </p>
@@ -79,7 +79,7 @@ export default function Home() {
               asChild
               size="lg"
               variant="outline"
-              className="rounded-full border-white/30 text-white hover:bg-white/10 px-8"
+              className="rounded-full border-white/40 text-white bg-white/15 hover:bg-white/25 px-8"
             >
               <Link href="/products">제품 보기</Link>
             </Button>
