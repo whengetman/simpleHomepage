@@ -1,198 +1,102 @@
-'use client'
-
-import { useState } from 'react'
-import PageHero from '@/components/PageHero'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Label } from '@/components/ui/label'
-import { Separator } from '@/components/ui/separator'
-
-interface FormState {
-  company: string
-  person: string
-  phone: string
-  email: string
-  product: string
-  width: string
-  height: string
-  thickness: string
-  qty: string
-  printing: string
-  use: string
-  memo: string
-  to: string
-}
-
-const inputClass =
-  'rounded-md border border-border bg-white px-3 py-2.5 text-sm text-ink font-noto focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/10 w-full'
-
-const initial: FormState = {
-  company: '', person: '', phone: '', email: '',
-  product: '식품 포장지', width: '', height: '', thickness: '',
-  qty: '', printing: '', use: '', memo: '',
-  to: 'korea8222@hanmail.net',
-}
+'use client';
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { Separator } from '@/components/ui/separator';
 
 export default function InquiryPage() {
-  const [form, setForm] = useState<FormState>(initial)
-
-  const set = (k: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-    setForm((prev) => ({ ...prev, [k]: e.target.value }))
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!form.company && !form.person) { alert('회사명 또는 담당자명을 입력해주세요.'); return }
-    if (!form.phone && !form.email) { alert('연락처 또는 이메일 중 하나는 입력해주세요.'); return }
-
-    const subject = encodeURIComponent(`[견적 문의] ${form.company || form.person} / ${form.product}`)
-    const lines = [
-      `회사명: ${form.company}`,
-      `담당자: ${form.person}`,
-      `연락처: ${form.phone}`,
-      `이메일: ${form.email}`,
-      `제품 종류: ${form.product}`,
-      `규격(가로x세로x두께): ${form.width} x ${form.height} x ${form.thickness}`,
-      `수량: ${form.qty}`,
-      `인쇄: ${form.printing}`,
-      `용도: ${form.use}`,
-      `요청사항: ${form.memo}`,
-      '',
-      '(첨부파일은 회신 메일로 보내주세요.)',
-    ]
-    const body = lines.map(encodeURIComponent).join('%0D%0A')
-    window.location.href = `mailto:${form.to || 'korea8222@hanmail.net'}?subject=${subject}&body=${body}`
-  }
-
-  const handleCopy = () => {
-    const text = Object.entries(form)
-      .filter(([k]) => k !== 'to')
-      .map(([k, v]) => `${k}: ${v}`)
-      .join('\n')
-    navigator.clipboard.writeText(text).then(() => {
-      alert('요약을 복사했습니다. 이메일 작성 시 붙여넣기 하세요.')
-    })
-  }
-
-  const fieldClass = 'flex flex-col gap-1.5'
-
+  const [form, setForm] = useState({ company:'', name:'', phone:'', email:'', product:'', qty:'', print:'', memo:'' });
+  const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    setForm(p => ({ ...p, [k]: e.target.value }));
+  const submit = () => {
+    const body = Object.entries({ 회사명:form.company, 담당자:form.name, 연락처:form.phone, 이메일:form.email, 제품규격:form.product, 수량:form.qty, 인쇄여부:form.print, 메모:form.memo })
+      .map(([k,v]) => `${k}: ${v}`).join('\n');
+    window.location.href = `mailto:skagnl6855@naver.com?subject=제품 문의&body=${encodeURIComponent(body)}`;
+  };
   return (
-    <>
-      <PageHero
-        eyebrow="Inquiry"
-        title="견적/문의"
-        description="제품 종류·규격·수량을 입력하시면 이메일로 견적을 보내드립니다."
-      />
+    <main className="bg-white">
+      <div className="border-b border-gray-200 px-6 py-2 flex items-center justify-between">
+        <span className="text-xs font-black tracking-[4px] uppercase text-gray-900">Inquiry</span>
+        <span className="text-xs text-gray-400">견적·문의</span>
+      </div>
 
-      <main className="py-12 md:py-16">
-        <div className="container max-w-2xl mx-auto">
-          <form
-            onSubmit={handleSubmit}
-            className="bg-white border border-border rounded-[14px] shadow-card p-7 space-y-4"
-          >
-            {/* Row 1 */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className={fieldClass}>
-                <Label htmlFor="q_company">회사명</Label>
-                <Input id="q_company" placeholder="예) 동우CNPACK" value={form.company} onChange={set('company')} />
+      <section className="p-4 sm:p-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 border border-gray-200 rounded-2xl overflow-hidden">
+          <div className="md:col-span-5 bg-black p-8 flex flex-col justify-between min-h-[240px]">
+            <div />
+            <div>
+              <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight tracking-tighter mb-4">
+                문의<br/>하기
+              </h1>
+              <p className="text-sm text-gray-400">견적·납기·맞춤 제작 문의</p>
+            </div>
+          </div>
+          <div className="md:col-span-7 p-6 flex flex-col gap-4">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex flex-col gap-1.5">
+                <Label className="text-xs font-bold text-gray-400 uppercase tracking-widest">회사명</Label>
+                <Input placeholder="회사명" value={form.company} onChange={set('company')} className="rounded-xl border-gray-200 text-sm" />
               </div>
-              <div className={fieldClass}>
-                <Label htmlFor="q_person">담당자명</Label>
-                <Input id="q_person" placeholder="예) 홍길동" value={form.person} onChange={set('person')} />
+              <div className="flex flex-col gap-1.5">
+                <Label className="text-xs font-bold text-gray-400 uppercase tracking-widest">담당자</Label>
+                <Input placeholder="담당자명" value={form.name} onChange={set('name')} className="rounded-xl border-gray-200 text-sm" />
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <Label className="text-xs font-bold text-gray-400 uppercase tracking-widest">연락처</Label>
+                <Input placeholder="010-0000-0000" value={form.phone} onChange={set('phone')} className="rounded-xl border-gray-200 text-sm" />
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <Label className="text-xs font-bold text-gray-400 uppercase tracking-widest">이메일</Label>
+                <Input placeholder="email@example.com" value={form.email} onChange={set('email')} className="rounded-xl border-gray-200 text-sm" />
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <Label className="text-xs font-bold text-gray-400 uppercase tracking-widest">제품·규격</Label>
+                <Input placeholder="예: 비닐폴리백 30×40cm" value={form.product} onChange={set('product')} className="rounded-xl border-gray-200 text-sm" />
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <Label className="text-xs font-bold text-gray-400 uppercase tracking-widest">수량</Label>
+                <Input placeholder="예: 10,000매" value={form.qty} onChange={set('qty')} className="rounded-xl border-gray-200 text-sm" />
               </div>
             </div>
-
-            {/* Row 2 */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className={fieldClass}>
-                <Label htmlFor="q_phone">연락처</Label>
-                <Input id="q_phone" type="tel" placeholder="예) 010-0000-0000" value={form.phone} onChange={set('phone')} />
-              </div>
-              <div className={fieldClass}>
-                <Label htmlFor="q_email">발신 이메일</Label>
-                <Input id="q_email" type="email" placeholder="예) user@example.com" value={form.email} onChange={set('email')} />
-              </div>
+            <div className="flex flex-col gap-1.5">
+              <Label className="text-xs font-bold text-gray-400 uppercase tracking-widest">인쇄 여부</Label>
+              <select value={form.print} onChange={set('print')}
+                className="w-full rounded-xl border border-gray-200 px-3 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-1 focus:ring-gray-900">
+                <option value="">선택해주세요</option>
+                <option value="인쇄 있음">인쇄 있음</option>
+                <option value="인쇄 없음 (무지)">인쇄 없음 (무지)</option>
+                <option value="미정">미정</option>
+              </select>
             </div>
-
-            {/* Row 3 */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className={fieldClass}>
-                <Label htmlFor="q_product">제품 종류</Label>
-                <select
-                  id="q_product"
-                  className={inputClass}
-                  value={form.product}
-                  onChange={set('product')}
-                >
-                  {['식품 포장지', '비닐폴리백', '인쇄 포장', '지퍼백', '기타'].map((v) => (
-                    <option key={v} value={v}>{v}</option>
-                  ))}
-                </select>
-              </div>
-              <div className={fieldClass}>
-                <Label htmlFor="q_width">가로 (mm)</Label>
-                <Input id="q_width" placeholder="예) 200" value={form.width} onChange={set('width')} />
-              </div>
-              <div className={fieldClass}>
-                <Label htmlFor="q_height">세로 (mm)</Label>
-                <Input id="q_height" placeholder="예) 300" value={form.height} onChange={set('height')} />
-              </div>
+            <div className="flex flex-col gap-1.5">
+              <Label className="text-xs font-bold text-gray-400 uppercase tracking-widest">추가 메모</Label>
+              <Textarea placeholder="기타 요청사항을 입력해주세요" value={form.memo} onChange={set('memo')} rows={3} className="rounded-xl border-gray-200 text-sm resize-none" />
             </div>
-
-            {/* Row 4 */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className={fieldClass}>
-                <Label htmlFor="q_thickness">두께 (μm)</Label>
-                <Input id="q_thickness" placeholder="예) 50" value={form.thickness} onChange={set('thickness')} />
-              </div>
-              <div className={fieldClass}>
-                <Label htmlFor="q_qty">수량</Label>
-                <Input id="q_qty" placeholder="예) 10,000장" value={form.qty} onChange={set('qty')} />
-              </div>
-              <div className={fieldClass}>
-                <Label htmlFor="q_printing">인쇄</Label>
-                <Input id="q_printing" placeholder="예) 1도 단면 / 무인쇄" value={form.printing} onChange={set('printing')} />
-              </div>
-            </div>
-
-            {/* Use */}
-            <div className={fieldClass}>
-              <Label htmlFor="q_use">용도</Label>
-              <Input id="q_use" placeholder="예) 냉동식품 포장 / 건식 제품 포장 등" value={form.use} onChange={set('use')} />
-            </div>
-
-            {/* Memo */}
-            <div className={fieldClass}>
-              <Label htmlFor="q_memo">요청사항</Label>
-              <Textarea id="q_memo" placeholder="납기, 포장 방식, 배송지 등 추가 요청사항을 적어주세요." value={form.memo} onChange={set('memo')} />
-            </div>
-
-            <Separator />
-
-            {/* Submit */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end">
-              <div className={fieldClass}>
-                <Label htmlFor="q_to">수신 이메일</Label>
-                <Input id="q_to" type="email" value={form.to} onChange={set('to')} />
-                <p className="text-[12px] text-muted">메일 앱이 열리며, 입력한 내용이 본문으로 채워집니다.</p>
-              </div>
-              <div className="flex gap-2.5 flex-wrap">
-                <Button type="submit" variant="default">📧 메일로 보내기</Button>
-                <Button type="button" variant="outline" onClick={handleCopy}>내용 복사</Button>
-              </div>
-            </div>
-
-            <div className="space-y-1">
-              <p className="text-[12px] text-muted">※ 첨부파일이 있을 경우, 메일 앱이 열린 뒤 파일을 첨부해 보내주세요.</p>
-              <p className="text-[12px] text-muted">
-                ※ 직접 전화 문의도 가능합니다:{' '}
-                <a href="tel:031-631-7284" className="text-brand-blue hover:underline">031-631-7284</a>
-              </p>
-            </div>
-          </form>
+            <Button onClick={submit} className="w-full rounded-full bg-gray-900 text-white hover:bg-gray-700 font-bold py-3">
+              이메일로 문의 보내기
+            </Button>
+          </div>
         </div>
-      </main>
-    </>
-  )
-}
+      </section>
 
+      <Separator />
+
+      <section className="px-4 sm:px-6 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100">
+          {[
+            { label: 'Tel', value: '031-631-7284', href: 'tel:031-631-7284' },
+            { label: 'Mobile', value: '010-9002-8222', href: 'tel:010-9002-8222' },
+            { label: 'E-mail', value: 'skagnl6855@naver.com', href: 'mailto:skagnl6855@naver.com' },
+          ].map(({ label, value, href }) => (
+            <div key={label} className="px-6 py-6 first:pl-0 last:pr-0">
+              <div className="text-[10px] font-black text-gray-300 tracking-widest mb-2">{label}</div>
+              <a href={href} className="text-sm font-black text-gray-900 hover:text-gray-500 transition-colors">{value}</a>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}

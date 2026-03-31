@@ -1,71 +1,82 @@
-import type { Metadata } from 'next'
-import Image from 'next/image'
-import PageHero from '@/components/PageHero'
-import { Card, CardContent } from '@/components/ui/card'
-
-export const metadata: Metadata = {
-  title: '기업 소개',
-  description: '동우CNPACK 기업 소개 — 30년 경력의 식품 포장지·비닐폴리백 전문 제조업체.',
-  alternates: { canonical: 'https://dongwoocnpack.com/company' },
-  openGraph: {
-    url: 'https://dongwoocnpack.com/company',
-    title: '기업 소개 | 동우CNPACK',
-    description: '30년 경력의 식품 포장지·비닐폴리백 전문 제조업체 동우CNPACK을 소개합니다.',
-  },
-}
-
-const facilities = [
-  { src: '/assets/img/gravure-press-1.jpg', alt: '그라비아 인쇄기 전경', caption: '그라비아 인쇄기 (전경)' },
-  { src: '/assets/img/bag-making-1.jpg', alt: '가공기(봉투 제작) 라인', caption: '가공기 (봉투 제작 라인)' },
-  { src: '/assets/img/gravure-press-2.jpg', alt: '그라비아 인쇄기 근접', caption: '그라비아 인쇄기 (근접)' },
-]
+import Image from 'next/image';
+import { Separator } from '@/components/ui/separator';
 
 export default function CompanyPage() {
   return (
-    <>
-      <PageHero eyebrow="Company" title="기업 소개" description="30년 경력의 식품 포장 전문 제조업체 동우CNPACK입니다." />
+    <main className="bg-white">
+      <div className="border-b border-gray-200 px-6 py-2 flex items-center justify-between">
+        <span className="text-xs font-black tracking-[4px] uppercase text-gray-900">Company</span>
+        <span className="text-xs text-gray-400">동우씨앤팩 · Since 1990</span>
+      </div>
 
-      <main className="py-12 md:py-16">
-        <div className="container space-y-12">
-
-          {/* About */}
-          <section className="animate-fade-up">
-            <div className="section-label">About Us</div>
-            <div className="section-title">동우CNPACK 소개</div>
-            <Card>
-              <CardContent className="space-y-2 text-[15px] leading-[1.7]">
-                <p>동우CNPACK은 식품 포장지 및 비닐폴리백 전문 제조 기업입니다.</p>
-                <p>30년 이상의 제조 경험을 바탕으로 고품질 소재와 정밀한 공정을 통해 고객의 제품을 더욱 돋보이게 하는 포장재를 공급합니다.</p>
-                <p>서울 사무소와 경기도 이천 직영 공장을 운영하며, 소량·대량 주문 모두 신속하게 대응합니다.</p>
-                <p className="text-[12px] text-muted mt-3">※ 상세 기업 정보(인증서, 설비 현황 등)가 있으시면 추가해 드립니다.</p>
-              </CardContent>
-            </Card>
-          </section>
-
-          {/* Facilities */}
-          <section className="animate-fade-up [animation-delay:100ms]">
-            <div className="section-label">Facilities</div>
-            <div className="section-title">설비 소개</div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {facilities.map((f) => (
-                <figure
-                  key={f.src}
-                  className="bg-white border border-border rounded-[14px] shadow-card overflow-hidden m-0"
-                >
-                  <div className="relative w-full h-[220px] bg-off">
-                    <Image src={f.src} alt={f.alt} fill className="object-cover" loading="lazy" />
-                  </div>
-                  <figcaption className="flex items-center px-3.5 py-3 text-[13px] text-ink">
-                    {f.caption}
-                  </figcaption>
-                </figure>
-              ))}
+      <section className="p-4 sm:p-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 border border-gray-200 rounded-2xl overflow-hidden">
+          <div className="md:col-span-5 bg-black p-8 flex flex-col justify-between min-h-[280px]">
+            <div />
+            <div>
+              <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight tracking-tighter mb-4">
+                신뢰를<br/>만드는<br/>기업
+              </h1>
+              <p className="text-sm text-gray-400">30년 경력의 식품 포장 전문 제조업체</p>
             </div>
-            <p className="text-[12px] text-muted mt-2.5">※ 실제 설비 사진을 제공해 주시면 교체해 드립니다.</p>
-          </section>
-
+          </div>
+          <div className="md:col-span-7 flex flex-col divide-y divide-gray-100">
+            {[
+              { label: '회사명', value: '동우씨앤팩 (주)' },
+              { label: '대표자', value: '조남휘' },
+              { label: '설립연도', value: '1990년' },
+              { label: '사업자등록번호', value: '201-18-48413' },
+              { label: '사무소', value: '서울특별시 중구 다산로 29길 45' },
+              { label: '공장', value: '경기도 이천시 진상미로 1857-10' },
+            ].map(({ label, value }) => (
+              <div key={label} className="px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                <span className="text-xs font-bold tracking-widest uppercase text-gray-400 w-28 shrink-0">{label}</span>
+                <span className="text-sm font-bold text-gray-900">{value}</span>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
-    </>
-  )
+      </section>
+
+      <section className="px-4 sm:px-6 pb-6">
+        <div className="flex items-center gap-4 mb-5">
+          <span className="text-[10px] font-black tracking-[4px] uppercase text-gray-400">Facility</span>
+          <div className="flex-1 h-px bg-gray-100" />
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          {[
+            { img: '/assets/img/gravure-press-1.jpg', label: '그라비아 인쇄 공정' },
+            { img: '/assets/img/gravure-press-2.jpg', label: '제대 공정' },
+            { img: '/assets/img/bag-making-1.jpg',    label: '제조 현장' },
+          ].map(({ img, label }) => (
+            <div key={label} className="group">
+              <div className="relative aspect-video rounded-xl overflow-hidden bg-gray-100 mb-2">
+                <Image src={img} alt={label} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <span className="text-xs font-bold text-gray-900">{label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <Separator />
+
+      <section className="px-4 sm:px-6 py-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100">
+          {[
+            { no: '01', title: '직접 제조',  sub: '이천 공장 직영' },
+            { no: '02', title: '식품 등급',  sub: '위생·안전 인증' },
+            { no: '03', title: '맞춤 제작',  sub: '규격·인쇄 커스텀' },
+            { no: '04', title: '신속 납품',  sub: '소량·대량 대응' },
+          ].map(({ no, title, sub }) => (
+            <div key={no} className="px-6 py-6 first:pl-0 last:pr-0">
+              <div className="text-[10px] font-black text-gray-200 tracking-widest mb-2">{no}</div>
+              <div className="text-sm font-black text-gray-900 mb-1">{title}</div>
+              <div className="text-xs text-gray-400">{sub}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
 }

@@ -1,92 +1,80 @@
-'use client'
+'use client';
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { Copy, Check } from 'lucide-react';
 
-import { useState } from 'react'
-import PageHero from '@/components/PageHero'
-import { Button } from '@/components/ui/button'
-import { Card, CardHeader, CardContent } from '@/components/ui/card'
-
-interface CopyState {
-  office: boolean
-  factory: boolean
-  tel: boolean
-  mobile: boolean
-  fax: boolean
+function CopyRow({ label, value, href }: { label: string; value: string; href?: string }) {
+  const [copied, setCopied] = useState(false);
+  const copy = () => {
+    navigator.clipboard.writeText(value).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    });
+  };
+  return (
+    <div className="px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors group">
+      <span className="text-xs font-bold tracking-widest uppercase text-gray-400 w-28 shrink-0">{label}</span>
+      {href ? (
+        <a href={href} className="text-sm font-bold text-gray-900 hover:text-gray-600 flex-1">{value}</a>
+      ) : (
+        <span className="text-sm font-bold text-gray-900 flex-1">{value}</span>
+      )}
+      <button onClick={copy} className="ml-4 text-gray-300 hover:text-gray-900 transition-colors">
+        {copied ? <Check className="w-3.5 h-3.5 text-gray-900" /> : <Copy className="w-3.5 h-3.5" />}
+      </button>
+    </div>
+  );
 }
 
-const contactRows = [
-  { key: 'office' as const, label: '사무실', value: '서울특별시 중구 다산로 29길 45', copyText: '서울특별시 중구 다산로 29길 45' },
-  { key: 'factory' as const, label: '공장', value: '경기도 이천시 진상미로 1857-10', copyText: '경기도 이천시 진상미로 1857-10' },
-  { key: 'tel' as const, label: 'Tel', value: '031-631-7284', copyText: '031-631-7284', href: 'tel:031-631-7284' },
-  { key: 'mobile' as const, label: 'Mobile', value: '010-9002-8222', copyText: '010-9002-8222', href: 'tel:010-9002-8222' },
-  { key: 'fax' as const, label: 'Fax', value: '031-631-7287', copyText: '031-631-7287' },
-]
-
 export default function ContactPage() {
-  const [copied, setCopied] = useState<Partial<CopyState>>({})
-
-  const copy = (key: keyof CopyState, text: string) => {
-    navigator.clipboard.writeText(text).then(() => {
-      setCopied((prev) => ({ ...prev, [key]: true }))
-      setTimeout(() => setCopied((prev) => ({ ...prev, [key]: false })), 1500)
-    }).catch(() => alert('복사에 실패했습니다.'))
-  }
-
   return (
-    <>
-      <PageHero eyebrow="Contact" title="연락처" description="전화, 이메일, 또는 견적 문의 양식으로 문의해 주세요." />
+    <main className="bg-white">
+      <div className="border-b border-gray-200 px-6 py-2 flex items-center justify-between">
+        <span className="text-xs font-black tracking-[4px] uppercase text-gray-900">Contact</span>
+        <span className="text-xs text-gray-400">연락처</span>
+      </div>
 
-      <main className="py-12 md:py-16">
-        <div className="container max-w-2xl mx-auto">
-          <Card className="overflow-hidden">
-            <CardHeader>📋 동우CNPACK 연락처 정보</CardHeader>
-            <CardContent className="px-7 py-6">
-              <div className="divide-y divide-border">
-                {contactRows.map((row) => (
-                  <div key={row.key} className="flex items-center flex-wrap gap-2 py-3">
-                    <div className="w-[90px] shrink-0 text-[12px] font-bold text-muted uppercase tracking-[.5px]">
-                      {row.label}
-                    </div>
-                    <div className="flex-1 text-[14px] font-medium text-ink">
-                      {row.href ? (
-                        <a href={row.href} className="text-brand-blue hover:underline">{row.value}</a>
-                      ) : (
-                        row.value
-                      )}
-                    </div>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => copy(row.key, row.copyText)}
-                    >
-                      {copied[row.key] ? '✓ 복사됨' : '복사'}
-                    </Button>
-                  </div>
-                ))}
-
-                {/* Email row (no copy button) */}
-                <div className="flex items-start flex-wrap gap-2 py-3">
-                  <div className="w-[90px] shrink-0 text-[12px] font-bold text-muted uppercase tracking-[.5px]">
-                    E-mail
-                  </div>
-                  <div className="flex-1 text-[14px] font-medium space-y-0.5">
-                    <div><a href="mailto:korea8222@hanmail.net" className="text-brand-blue hover:underline">korea8222@hanmail.net</a></div>
-                    <div><a href="mailto:skagnl6855@naver.com" className="text-brand-blue hover:underline">skagnl6855@naver.com</a></div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex gap-2 flex-wrap mt-5">
-                <Button variant="default" asChild>
-                  <a href="/inquiry">📋 견적/문의 양식</a>
-                </Button>
-                <Button variant="outline" asChild>
-                  <a href="tel:031-631-7284">📞 전화 문의</a>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+      <section className="p-4 sm:p-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 border border-gray-200 rounded-2xl overflow-hidden">
+          <div className="md:col-span-5 bg-black p-8 flex flex-col justify-between min-h-[240px]">
+            <div />
+            <div>
+              <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight tracking-tighter mb-4">
+                연락처
+              </h1>
+              <p className="text-sm text-gray-400">언제든지 문의해 주세요</p>
+            </div>
+          </div>
+          <div className="md:col-span-7 flex flex-col divide-y divide-gray-100">
+            <CopyRow label="사무소" value="서울특별시 중구 다산로 29길 45" />
+            <CopyRow label="공장" value="경기도 이천시 진상미로 1857-10" />
+            <CopyRow label="Tel" value="031-631-7284" href="tel:031-631-7284" />
+            <CopyRow label="Mobile" value="010-9002-8222" href="tel:010-9002-8222" />
+            <CopyRow label="Fax" value="031-631-7287" />
+            <CopyRow label="E-mail" value="skagnl6855@naver.com" href="mailto:skagnl6855@naver.com" />
+            <div className="px-6 py-5 flex items-center justify-between">
+              <span className="text-xs text-gray-400">항목을 클릭하면 복사됩니다</span>
+              <Button asChild size="sm" className="rounded-full bg-gray-900 text-white hover:bg-gray-700 text-xs px-5">
+                <a href="mailto:skagnl6855@naver.com?subject=문의">이메일 문의</a>
+              </Button>
+            </div>
+          </div>
         </div>
-      </main>
-    </>
-  )
+      </section>
+
+      <Separator />
+
+      <section className="border-t-2 border-gray-900 px-4 sm:px-6 py-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div>
+          <div className="text-[10px] font-black tracking-[4px] uppercase text-gray-400 mb-3">Call Us</div>
+          <h2 className="text-3xl sm:text-4xl font-black tracking-tighter text-gray-900">031-631-7284</h2>
+          <p className="text-xs text-gray-400 mt-2">평일 09:00 — 18:00</p>
+        </div>
+        <Button asChild size="lg" className="rounded-full bg-gray-900 text-white hover:bg-gray-700 font-bold px-10 shrink-0">
+          <a href="tel:031-631-7284">전화하기</a>
+        </Button>
+      </section>
+    </main>
+  );
 }
